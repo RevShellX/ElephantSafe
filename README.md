@@ -1,8 +1,8 @@
-# 🐘 ElephantSafe 2.0 Password Manager
+# 🐘 ElephantSafe 5.0 Password Manager
 
 A versatile and secure command-line password manager built in Python that combines strong encryption, customizable password generation, and user-friendly features. Using GPG encryption and modern cryptographic practices, ElephantSafe ensures your passwords remain secure while being easily accessible.
 
-![ElephantSafe Logo](https://raw.githubusercontent.com/your-username/elephantsafe/main/logo.txt)
+
 
 ## Key Features
 
@@ -44,7 +44,7 @@ A versatile and secure command-line password manager built in Python that combin
 
 1. Clone or download this repository:
    ```powershell
-   git clone https://github.com/your-username/elephantsafe.git
+     git clone https://github.com/RevShellX/ElephantSafe.py.git
    cd elephantsafe
    ```
 
@@ -78,7 +78,7 @@ A versatile and secure command-line password manager built in Python that combin
 ### Quick Start
 1. Run the script:
    ```powershell
-   python Pass.py
+   python ElephantSafe.py
    ```
 
 2. Choose from the main menu:
@@ -168,7 +168,7 @@ Feel free to submit issues and enhancement requests!
 
 ## Author
 
-Your Name
+RevShellX
 
 ---
 
