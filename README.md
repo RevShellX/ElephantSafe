@@ -1,48 +1,175 @@
-Here's the combined and updated version of the text:
+# 🐘 ElephantSafe 2.0 Password Manager
 
-🐘 ElephantSafe2.0 Password Generator (Updated Version)
+A versatile and secure command-line password manager built in Python that combines strong encryption, customizable password generation, and user-friendly features. Using GPG encryption and modern cryptographic practices, ElephantSafe ensures your passwords remain secure while being easily accessible.
 
-ElephantSafe is a versatile and user-friendly terminal-based password generator built with a focus on security and ease of use. Featuring a unique blend of randomization techniques, hash-based checks, and customizable settings, ElephantSafe ensures your passwords are both strong and uncompromised, while incorporating some fun features like elephant ASCII art!
+![ElephantSafe Logo](https://raw.githubusercontent.com/your-username/elephantsafe/main/logo.txt)
 
-Features:
-- Secure Password Generation: Create strong passwords with custom lengths (up to 100 characters) and options to include/exclude symbols, numbers, and similar characters (e.g., 'I', 'l', 'O', '0').
-- Pronounceable Passwords: Generate easy-to-remember but secure passwords using alternating consonants and vowels.
-- Password Strength Check: Assess the strength of your password with a built-in strength meter and estimated cracking time ranging from "days" to "centuries."
-- Password History: Save your generated passwords along with timestamps and view the last 5 entries for easy retrieval.
-- Fun Facts: Enjoy random password-related facts to stay informed while securing your digital life.
-- ASCII Art: Display cool elephant art to remind you that your passwords are protected with the strength of an elephant!
-- GPG Encryption for Extra Security: Your passwords are now encrypted and saved in a GPG file, adding an extra layer of protection. No more plain text storage, ensuring that your sensitive data remains secure from unauthorized access.
+## Key Features
 
-Getting Started:
-To generate a secure password, simply run the script and follow the prompts to specify the desired length and customize your settings:
+- 🔐 Secure Password Generation
+  - Customizable length (16-128 characters)
+  - Include/exclude symbols, numbers, and similar characters
+  - Cryptographically secure random number generation using `secrets` module
+  
+- 🛡️ Enhanced Security
+  - GPG encryption for secure storage
+  - Unique salt generation for each password
+  - Secure memory cleanup after usage
+  - PBKDF2HMAC key derivation
+  
+- 📊 Advanced Password Analysis
+  - Comprehensive strength assessment
+  - Estimated cracking time calculation
+  - Password history tracking
+  
+- 🎯 User Experience
+  - Intuitive command-line interface
+  - ASCII art elephant logo
+  - Password viewing and management
+  - Detailed feedback and strength metrics
+  
+- 💾 Storage Options
+  - Secure GPG encrypted storage (recommended)
+  - Plain text storage (for testing only)
 
-```bash
-python3 ElephantSafe.py
+## Requirements
+
+- Python 3.x
+- GPG (GnuPG) installed on your system
+- Required Python packages (see requirements.txt):
+  - python-gnupg
+  - cryptography
+
+## Installation
+
+1. Clone or download this repository:
+   ```powershell
+   git clone https://github.com/your-username/elephantsafe.git
+   cd elephantsafe
+   ```
+
+2. Install GnuPG on your system:
+   - Windows: 
+     ```powershell
+     winget install GnuPG.GnuPG
+     # Or download from https://www.gpg4win.org/
+     ```
+   - Linux: 
+     ```bash
+     sudo apt-get install gnupg
+     ```
+   - macOS: 
+     ```bash
+     brew install gnupg
+     ```
+
+3. Install Python requirements:
+   ```powershell
+   pip install -r requirements.txt
+   ```
+
+4. Verify GPG installation:
+   ```powershell
+   gpg --version
+   ```
+
+## Usage
+
+### Quick Start
+1. Run the script:
+   ```powershell
+   python Pass.py
+   ```
+
+2. Choose from the main menu:
+   ```
+   1. Generate and save a new password
+   2. View password history
+   3. Decrypt and view stored passwords
+   4. Exit
+   ```
+
+### Example Usage
+
+#### Generating a New Password:
+```
+Length: 64
+Include symbols? y
+Include numbers? y
+Exclude similar characters? y
+
+Generated Password: P@ssw0rd!123...
+Strength: Very Strong 💪
+Estimated cracking time: centuries
 ```
 
-You will be prompted to:
-- Set password length (up to 100 characters, with a recommended minimum of 12).
-- Choose whether to include symbols, numbers, and exclude similar characters.
-
-After generating the password, you'll receive feedback on its strength, estimated cracking time, and whether it has been found in any known data breaches.
-
-Example Output:
+#### Viewing Stored Passwords:
 ```
-Generated Password: $TR0ngP@ssw0rd!
-Password Strength: Very Strong 💪💪💪💪💪
-Estimated time to crack: centuries
-Good news! This password hasn't been found in any known data breaches.
-Password has been securely saved in a GPG file.
+1. github.com (saved on 2025-05-22T10:30:15)
+2. email.com (saved on 2025-05-22T10:35:22)
+...
 ```
 
-Why ElephantSafe?
-The name ElephantSafe reflects the robustness and security of your passwords—just like an elephant, strong and difficult to break. Whether you're generating secure passwords for everyday use or looking for pronounceable, memorable options, ElephantSafe has you covered.
+### Generating a Password
 
-Recent Security Updates:
-1. **Cryptographically Secure Random Number Generator**: The previous method of generating random characters using `os.urandom()` has been replaced with `secrets.choice()`. The `secrets` module is designed for generating cryptographically strong random numbers suitable for managing sensitive data such as passwords.
-2. **Unique Salt for Key Derivation**: A unique salt is now used for key derivation with the PBKDF2HMAC function. Instead of using a static salt, a random salt is generated using `os.urandom(16)` each time a password is saved. This significantly enhances security by ensuring that derived keys are unique and not predictable.
+1. Select option 1 from the main menu
+2. Enter desired password length (16-128 characters)
+3. Choose whether to include symbols and numbers
+4. Opt to exclude similar characters if desired
+5. Choose storage method (GPG encrypted or plain text)
 
-These changes collectively enhance the security of the password generation and storage process, making it much safer for users to create and save their passwords.
+### Viewing Stored Passwords
 
-License:
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. Select option 2 or 3 from the main menu
+2. Enter your GPG master password when prompted
+3. View your stored passwords securely
+
+## Security Features
+
+### Cryptographic Implementation
+- GPG encryption with AES256 for secure storage
+- `secrets` module for cryptographically secure random generation
+- Unique salt generation for each password
+- PBKDF2HMAC key derivation with SHA256
+- Secure memory wiping after password usage
+
+### Security Measures
+- Password strength assessment with multiple criteria
+- Secure password input handling
+- No plaintext password storage in memory
+- Screen clearing after sensitive data display
+- Input validation and sanitization
+
+## Password Storage
+
+- Encrypted passwords are stored in `saved_passwords.gpg`
+- Plain text passwords (for testing) are stored in `saved_passwords.txt`
+- Each password entry includes timestamp and service name
+
+## Best Practices
+
+1. Always use GPG encryption for storing passwords
+2. Use strong master passwords
+3. Generate passwords of at least 16 characters
+4. Include a mix of uppercase, lowercase, numbers, and symbols
+5. Regularly backup your GPG keys and password file
+
+## Disclaimer
+
+The plain text storage option is provided for testing purposes only. Always use GPG encryption for storing sensitive information.
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+
+## License
+
+[MIT License](LICENSE)
+
+## Author
+
+Your Name
+
+---
+
+🔐 Remember: Security is a journey, not a destination!
