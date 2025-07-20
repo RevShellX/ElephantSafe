@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "pip" # For Python (requirements.txt, pip dependencies)
+    directory: "/"           # Root directory
+    schedule:
+      interval: "weekly"     # Check for updates weekly
